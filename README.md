@@ -1,24 +1,10 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Crazy4Cats
 
-Things you may want to cover:
+Crazy4Cats consiste en un proyecto en el cual debemos realizar post como dueña de un blog, en el cual cualquier usuario puede comentar nuestros post y solo los usuarios registrados pueden darnos like o dislike
 
-* Ruby version
+en este proyecto se usan las gemas
+Faker
+Devise
+PG_SEARCH
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
