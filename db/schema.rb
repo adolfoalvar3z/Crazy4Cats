@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_032923) do
   create_table "posts_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
-    t.string "like"
+    t.string "reaccion"
   end
 
   create_table "users", force: :cascade do |t|

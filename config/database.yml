@@ -8,8 +8,8 @@ default: &default
 development:
   <<: *default
   database: Crazycats_development
-  username: leon
-  password: leon
+  username: <%= ENV["user_db"] %>
+  password: <%= ENV["pass_db"] %>
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -38,8 +38,8 @@ development:
 test:
   <<: *default
   database: Crazycats_test
-  username: leon
-  password: leon
+  username: <%= ENV["user_db"] %>
+  password: <%= ENV["pass_db"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -64,5 +64,5 @@ test:
 production:
   <<: *default
   database: Crazycats_production
-  username: leon
+  username: <%= ENV["user_db"] %>
   password: <%= ENV["BLOCKBUSTER_DATABASE_PASSWORD"] %>

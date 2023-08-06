@@ -10,15 +10,15 @@
         <li class="nav-item">
           <a class="nav-link active" href="<%= root_path %>" aria-current="page">Inicio <span class="visually-hidden">(current)</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= posts_path %>">Posteos</a>
+        </li>
         <% if !user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link" href="<%= user_session_path %>">Ingresar</a>
           </li>
         <% end %>
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= posts_path %>">Posteos</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -32,10 +32,13 @@
       <% if user_signed_in? %>
         <form class="d-flex my-2 my-lg-0">
           <input class="form-control me-sm-2" type="text" placeholder="Buscar">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+          <button class="btn btn-info btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
         </form>
       <% end %>
     </div>
   </div>
 </nav>
-<p class="notice"><%= notice %></p>
+<% if notice.present? %>
+<p class="notice alert alert-warning" role="alert"><%= notice %></p>
+<% end %>
+

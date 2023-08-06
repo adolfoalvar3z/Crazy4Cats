@@ -25,6 +25,15 @@ end
     end
     @comments = Comment.where(post_id: @post.id).order(created_at: :desc)
 
+    #contar likes y dislikes
+    connection = ActiveRecord::Base.connection
+
+    result_likes = connection.execute("SELECT COUNT(*) FROM posts_users WHERE reaccion = 'L' AND post_id = #{@post.id}")
+    @likes = result_likes.first['count'].to_i
+
+    result_dislikes = connection.execute("SELECT COUNT(*) FROM posts_users WHERE reaccion = 'D' AND post_id = #{@post.id}")
+    @dislikes = result_dislikes.first['count'].to_i
+
   end
 
   # GET /posts/new
@@ -34,18 +43,47 @@ end
 
   end
 
-def like
-  @post.update(post_params)
-end
+  def add_like
+    post = Post.find(params[:id])
+    user_id = current_user.id
 
-def dislike
-  @post.update(post_params)
-end
+    # Verificamos si el usuario ya ha dado like o dislike al post
+    existing_post_user = ActiveRecord::Base.connection.execute("SELECT * FROM posts_users WHERE post_id = #{post.id} AND user_id = #{user_id}").first
 
-def normaLike
-  @post.update(post_params)
-end
+    # Si el usuario aún no ha dado like o dislike, agregamos un nuevo reaccion
+    if existing_post_user.nil?
+      ActiveRecord::Base.connection.execute("
+        INSERT INTO posts_users (post_id, user_id, reaccion)
+        VALUES (#{post.id}, #{user_id}, 'L')
+      ")
+      flash[:notice] = "Like agregado correctamente."
+    else
+      flash[:notice] = "Ya has dado like o dislike a este post."
+    end
 
+    redirect_to post_path(post)
+  end
+
+def add_dislike
+  post = Post.find(params[:id])
+  user_id = current_user.id
+
+  # Verificamos si el usuario ya ha dado like o dislike al post
+  existing_post_user = ActiveRecord::Base.connection.execute("SELECT * FROM posts_users WHERE post_id = #{post.id} AND user_id = #{user_id}").first
+
+  # Si el usuario aún no ha dado like o dislike, agregamos un nuevo reaccion
+  if existing_post_user.nil?
+    ActiveRecord::Base.connection.execute("
+      INSERT INTO posts_users (post_id, user_id, reaccion)
+      VALUES (#{post.id}, #{user_id}, 'D')
+    ")
+    flash[:notice] = "Like agregado correctamente."
+  else
+    flash[:notice] = "Ya has dado like o dislike a este post."
+  end
+
+  redirect_to post_path(post)
+end
 
   # GET /posts/1/edit
   def edit
