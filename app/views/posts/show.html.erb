@@ -1,0 +1,42 @@
+<%= render @post %>
+<div>
+  <div class="btn-group mt-1" role="group" aria-label="Basic example">
+    <% if user_signed_in? %>
+      <%= link_to "Editar este post", edit_post_path(@post), class:"btn btn-warning" %>
+    <% end %>
+    <%= link_to "Volver a posts", posts_path, class:"btn btn-secondary" %>
+  </div>
+  <div class="row my-4">
+    <hr class="text-success">
+    <h4 class="text-success">Comentar</h4>
+    <%= form_for([@post, @comment]) do |form| %>
+      <!-- Otros campos del formulario -->
+      <%= form.text_area :message, class: "form-control" %>
+      <br>
+      <%= form.submit "Enviar", class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <div class="row">
+    <h4>Comentarios</h4>
+    <% @comments.each do |comment| %>
+      <p>
+        <%= comment.message %>
+        <br>
+        <% if comment.logueado == true  %>
+          <small>comment by: <%= comment.user.name %> - <%= comment.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
+        <% else %>
+          <small>comment by: Desconocido - <%= comment.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
+        <% end %>
+      </p>
+      <hr>
+      <!-- Otros atributos del comentario que deseas mostrar -->
+    <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="row my-4">
+      <hr class="text-danger">
+      <h4 class="text-danger">Eliminar</h4>
+      <%= button_to "Eliminar este post", @post, method: :delete, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>

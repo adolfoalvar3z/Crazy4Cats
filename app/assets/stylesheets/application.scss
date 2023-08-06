@@ -1,0 +1,114 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+/* styles.css */
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Estilos para el encabezado */
+  header {
+    background-color: #f9ca24;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  /* Estilos para las secciones */
+  section {
+    padding: 50px 0;
+  }
+
+  /* Estilos para la galería de imágenes */
+  .galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  .galeria img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos para los botones */
+  .btn {
+    background-color: #f9ca24;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+
+  .btn-danger {
+    background-color: #e74c3c; /* Rojo */
+    color: #fff;
+  }
+
+  .btn-danger:hover {
+    background-color: #c0392b; /* Rojo oscuro en hover */
+  }
+
+  .btn-success {
+    background-color: #2ecc71; /* Verde */
+    color: #fff;
+  }
+
+  .btn-success:hover {
+    background-color: #27ae60; /* Verde oscuro en hover */
+  }
+
+  .btn-secondary {
+    background-color: #95a5a6; /* Gris */
+    color: #fff;
+  }
+
+  .btn-secondary:hover {
+    background-color: #7f8c8d; /* Gris oscuro en hover */
+  }
+
+  .btn-info {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+  }
+
+  .btn-info:hover {
+    background-color: #2980b9; /* Azul oscuro en hover */
+  }
+  h1 {
+    font-size: 36px;
+    color: #f39c12; /* Color de texto para h1 */
+  }
+
+  /* Estilos para las secciones */
+  section {
+    padding: 50px 0;
+  }
+
+  /* Estilos para h2 */
+  h2 {
+    font-size: 28px;
+    color: #f9ca24; /* Color de texto para h2 */
+  }

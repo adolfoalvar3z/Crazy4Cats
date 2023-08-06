@@ -1,0 +1,16 @@
+<h1>Posts</h1>
+<% if user_signed_in? %>
+  <%= link_to "Nueva Publicación", new_post_path, class: "btn btn-success my-4" %>
+<% end %>
+<div id="posts" class="col-12">
+  <div id="posts" class="row">
+    <% @posts.each do |post| %>
+      <div class="col-6">
+        <%= render post %>
+        <p>
+          <%= link_to "Ver esta publicación", post, class: "btn btn-sm btn-primary" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

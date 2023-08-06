@@ -1,0 +1,10 @@
+<h1>Editing post</h1>
+
+<%= render "form", post: @post %>
+
+<br>
+
+<div>
+  <%= link_to "Mostrar este Post", @post, class: "btn btn-primary"  %> |
+  <%= link_to "Volver a Post", posts_path, class: "btn btn-secondary" %>
+</div>

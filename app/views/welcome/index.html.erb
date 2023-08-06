@@ -1,0 +1,41 @@
+<h1 class="text-center">Bienvenidos a Crazy4Cats</h1>
+<p class="text-center">Somos un sitio web dedicado a los fanaticos de los gatos, Bienvenidos</p>
+<br>
+<div class="row text-center">
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag("cat1", class:"d-block w-100 img-fluid") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("cat2", class:"d-block w-100 img-fluid") %>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag("cat3", class:"d-block w-100 img-fluid") %>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <h2 class="text-center">ULTIMAS PUBLICACIONES</h2>
+  <% @posts.each do |post|%>
+  <div class="col-3  text-center">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text"><%= post.message %></p>
+        <%= link_to "Ver esta publicación", post, class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
