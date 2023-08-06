@@ -1,9 +1,9 @@
 <div id="<%= dom_id post %>">
-  <div class="card my-5">
+  <div class="card mt-3 mb-1">
     <div class="card-body">
       <h1 class="card-title"><%= post.title %></h1>
-      <p class="card-text"><%= post.message %></p>
-      <span><%= post.user_id %></span>
+      <p class="card-text"><%= truncate(post.message, length: 300) %></p>
+      <span><%= post.user.name %></span>
       <p>
         <% if user_signed_in? %>
           <% if params[:id].present?%>

@@ -13,6 +13,10 @@ end
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    @consulta = params[:buscar]
+    if @consulta.present?
+      @posts = Post.search_full_text(@consulta)
+    end
   end
 
   # GET /posts/1 or /posts/1.json

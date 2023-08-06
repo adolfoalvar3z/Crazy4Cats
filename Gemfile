@@ -82,3 +82,5 @@ gem "figaro", "~> 1.2"
 gem 'faker'
 
 gem "devise", "~> 4.9"
+
+gem "pg_search", "~> 2.3"

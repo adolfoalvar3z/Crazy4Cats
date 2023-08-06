@@ -30,15 +30,21 @@
         <% end %>
       </ul>
       <% if user_signed_in? %>
-        <form class="d-flex my-2 my-lg-0">
-          <input class="form-control me-sm-2" type="text" placeholder="Buscar">
-          <button class="btn btn-info btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+        <%= form_with url: posts_path, method: :get do |form| %>
+          <!-- Cuadro de búsqueda de tweets anteriores -->
+          <div class="card mb-2">
+            <div class="card-body">
+              <div class="input-group">
+                <%= form.text_field :buscar, class: "form-control", placeholder: "Buscar Publicación", value: @consulta %>
+                <%= form.submit 'Buscar', class: "btn btn-outline-primary" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
 </nav>
 <% if notice.present? %>
-<p class="notice alert alert-warning" role="alert"><%= notice %></p>
+  <p class="notice alert alert-warning" role="alert"><%= notice %></p>
 <% end %>
-
